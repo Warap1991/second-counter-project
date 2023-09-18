@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .container {
+            text-align: center;
+            margin: 100px auto;
+        }
+
+        #counter {
+            font-size: 36px;
+            color: black;
+        }
+
+        #counter.green {
+            color: green;
+        }
+
+        #counter.red {
+            color: red;
+        }
+
+        button {
+            font-size: 24px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .btn-red {
+            background-color: red;
+            color: white;
+        }
+
+        .btn-blue {
+            background-color: blue;
+            color: white;
+        }
+
+        .btn-green {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Counter Project</h1>
+    </header>
+
+    <div class="container">
+        <span id="counter">0</span>
+        <br>
+        <button class="btn-red" onclick="decrease()">Decrease</button>
+        <button class="btn-blue" onclick="reset()">Reset</button>
+        <button class="btn-green" onclick="increase()">Increase</button>
+    </div>
+
+    <footer>
+        &copy; 2023 Counter Project by TCHAMASSE Warapisse
+    </footer>
+
+    <script>
+        let count = 0;
+        const counter = document.getElementById("counter");
+
+        function updateCounter() {
+            counter.textContent = count;
+            if (count > 0) {
+                counter.classList.remove("red");
+                counter.classList.add("green");
+            } else if (count < 0) {
+                counter.classList.remove("green");
+                counter.classList.add("red");
+            } else {
+                counter.classList.remove("red", "green");
+            }
+        }
+
+        function decrease() {
+            count--;
+            updateCounter();
+        }
+
+        function reset() {
+            count = 0;
+            updateCounter();
+        }
+
+        function increase() {
+            count++;
+            updateCounter();
+        }
+
+        updateCounter();
+    </script>
+</body>
+</html>
